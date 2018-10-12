@@ -114,8 +114,12 @@ abstract class Enum implements \JsonSerializable
     /** Returns only the values of the constants
      * @return array
      */
-    public static function getValues(){
-        return \array_values(static::toArray());
+    public static function plainValues(){
+        $values = array();
+        foreach (static::toArray() as $key => $value) {
+            $values[] = $value;
+        }
+        return $values;
     }
 
     /**
